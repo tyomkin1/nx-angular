@@ -28,7 +28,7 @@
   },
   "projects": {
     "frontend-cliet": {
-      "tags": []
+      "tags": ["scope:frontend-client"]
     },
     "frontend-cliet-e2e": {
       "tags": [],
