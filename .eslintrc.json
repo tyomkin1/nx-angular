@@ -15,6 +15,14 @@
               {
                 "sourceTag": "*",
                 "onlyDependOnLibsWithTags": ["*"]
+              },
+              {
+                "sourceTag": "scope:frontend-admin",
+                "onlyDependOnLibsWithTags": ["scope:frontend-admin"]
+              },
+              {
+                "sourceTag": "scope:frontend-client",
+                "onlyDependOnLibsWithTags": ["scope:frontend-client"]
               }
             ]
           }
