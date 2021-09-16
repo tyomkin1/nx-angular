@@ -1,5 +1,5 @@
 module.exports = {
-  displayName: 'frontend-cliet',
+  displayName: 'frontend-admin',
   preset: '../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
@@ -8,7 +8,7 @@ module.exports = {
       stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
-  coverageDirectory: '../../../coverage/apps/frontend/cliet',
+  coverageDirectory: '../../../coverage/apps/frontend/admin',
   transform: {
     '^.+\\.(ts|js|html)$': 'jest-preset-angular',
   },

@@ -1,27 +1,27 @@
 {
   "version": 1,
   "projects": {
-    "frontend-cliet": {
+    "frontend-admin": {
       "projectType": "application",
-      "root": "apps/frontend/cliet",
-      "sourceRoot": "apps/frontend/cliet/src",
+      "root": "apps/frontend/admin",
+      "sourceRoot": "apps/frontend/admin/src",
       "prefix": "svvs",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "outputs": ["{options.outputPath}"],
           "options": {
-            "outputPath": "dist/apps/frontend/cliet",
-            "index": "apps/frontend/cliet/src/index.html",
-            "main": "apps/frontend/cliet/src/main.ts",
-            "polyfills": "apps/frontend/cliet/src/polyfills.ts",
-            "tsConfig": "apps/frontend/cliet/tsconfig.app.json",
+            "outputPath": "dist/apps/frontend/admin",
+            "index": "apps/frontend/admin/src/index.html",
+            "main": "apps/frontend/admin/src/main.ts",
+            "polyfills": "apps/frontend/admin/src/polyfills.ts",
+            "tsConfig": "apps/frontend/admin/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "apps/frontend/cliet/src/favicon.ico",
-              "apps/frontend/cliet/src/assets"
+              "apps/frontend/admin/src/favicon.ico",
+              "apps/frontend/admin/src/assets"
             ],
-            "styles": ["apps/frontend/cliet/src/styles.scss"],
+            "styles": ["apps/frontend/admin/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -40,8 +40,8 @@
               ],
               "fileReplacements": [
                 {
-                  "replace": "apps/frontend/cliet/src/environments/environment.ts",
-                  "with": "apps/frontend/cliet/src/environments/environment.prod.ts"
+                  "replace": "apps/frontend/admin/src/environments/environment.ts",
+                  "with": "apps/frontend/admin/src/environments/environment.prod.ts"
                 }
               ],
               "outputHashing": "all"
@@ -59,12 +59,15 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "port": 4201
+          },
           "configurations": {
             "production": {
-              "browserTarget": "frontend-cliet:build:production"
+              "browserTarget": "frontend-admin:build:production"
             },
             "development": {
-              "browserTarget": "frontend-cliet:build:development"
+              "browserTarget": "frontend-admin:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -72,50 +75,171 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "frontend-cliet:build"
+            "browserTarget": "frontend-admin:build"
           }
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-              "apps/frontend/cliet/src/**/*.ts",
-              "apps/frontend/cliet/src/**/*.html"
+              "apps/frontend/admin/src/**/*.ts",
+              "apps/frontend/admin/src/**/*.html"
             ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/frontend/cliet"],
+          "outputs": ["coverage/apps/frontend/admin"],
           "options": {
-            "jestConfig": "apps/frontend/cliet/jest.config.js",
+            "jestConfig": "apps/frontend/admin/jest.config.js",
             "passWithNoTests": true
           }
         }
       }
     },
-    "frontend-cliet-e2e": {
-      "root": "apps/frontend-cliet-e2e",
-      "sourceRoot": "apps/frontend-cliet-e2e/src",
+    "frontend-client": {
+      "projectType": "application",
+      "root": "apps/frontend/client",
+      "sourceRoot": "apps/frontend/client/src",
+      "prefix": "svvs",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/frontend/client",
+            "index": "apps/frontend/client/src/index.html",
+            "main": "apps/frontend/client/src/main.ts",
+            "polyfills": "apps/frontend/client/src/polyfills.ts",
+            "tsConfig": "apps/frontend/client/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/frontend/client/src/favicon.ico",
+              "apps/frontend/client/src/assets"
+            ],
+            "styles": ["apps/frontend/client/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/frontend/client/src/environments/environment.ts",
+                  "with": "apps/frontend/client/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "port": 4200
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "frontend-client:build:production"
+            },
+            "development": {
+              "browserTarget": "frontend-client:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "frontend-client:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/frontend/client/src/**/*.ts",
+              "apps/frontend/client/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/frontend/client"],
+          "options": {
+            "jestConfig": "apps/frontend/client/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "frontend-client-e2e": {
+      "root": "apps/frontend/client-e2e",
+      "sourceRoot": "apps/frontend/client-e2e/src",
       "projectType": "application",
       "architect": {
         "e2e": {
           "builder": "@nrwl/cypress:cypress",
           "options": {
-            "cypressConfig": "apps/frontend-cliet-e2e/cypress.json",
-            "devServerTarget": "frontend-cliet:serve:development",
-            "tsConfig": "apps/frontend-cliet-e2e/tsconfig.json"
+            "cypressConfig": "apps/frontend/client-e2e/cypress.json",
+            "devServerTarget": "frontend/client:serve:development",
+            "tsConfig": "apps/frontend/client-e2e/tsconfig.json"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "frontend-cliet:serve:production"
+              "devServerTarget": "frontend/client:serve:production"
             }
           }
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/frontend-cliet-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": ["apps/frontend/client-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    },
+    "frontend/admin-e2e": {
+      "root": "apps/frontend/admin-e2e",
+      "sourceRoot": "apps/frontend/admin-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/frontend/admin-e2e/cypress.json",
+            "devServerTarget": "frontend-admin:serve:development"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "frontend-admin:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/frontend/admin-e2e/**/*.{js,ts}"]
           }
         }
       }
@@ -152,5 +276,5 @@
       "style": "scss"
     }
   },
-  "defaultProject": "frontend-cliet"
+  "defaultProject": "frontend-client"
 }
